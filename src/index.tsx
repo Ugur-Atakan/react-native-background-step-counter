@@ -66,13 +66,13 @@ const BackgroundStepCounter = (
   BackgroundStepCounterModule
     ? BackgroundStepCounterModule
     : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    )
+        {},
+        {
+          get() {
+            throw new Error(LINKING_ERROR);
+          },
+        }
+      )
 ) as Spec;
 const StepEventEmitter = new NativeEventEmitter(BackgroundStepCounter);
 type StepCountUpdateCallback = (result: StepCountData) => void;
@@ -113,7 +113,7 @@ class UnavailabilityError extends Error {
   constructor(moduleName: string, propertyName: string) {
     super(
       `The method or property ${moduleName}.${propertyName} is not available on ${Platform.OS}, ` +
-      "are you sure you've linked all the native dependencies properly?"
+        "are you sure you've linked all the native dependencies properly?"
     );
     this.code = 'ERR_UNAVAILABLE';
   }
