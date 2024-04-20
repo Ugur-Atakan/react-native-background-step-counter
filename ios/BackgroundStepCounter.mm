@@ -13,10 +13,10 @@
 RCT_EXPORT_MODULE()
 - (NSArray<NSString *> *)supportedEvents {
     return @[
-        @"StepCounter.stepCounterUpdate",
-        @"StepCounter.stepDetected",
-        @"StepCounter.errorOccurred",
-        @"StepCounter.stepsSensorInfo"
+        @"BackgroundStepCounter.stepCounterUpdate",
+        @"BackgroundStepCounter.stepDetected",
+        @"BackgroundStepCounter.errorOccurred",
+        @"BackgroundStepCounter.stepsSensorInfo"
     ];
 }
 
@@ -27,7 +27,7 @@ RCT_EXPORT_METHOD(isStepCountingSupported:(RCTPromiseResolveBlock)resolve
         @"granted": @(self.authorizationStatus),
         @"supported": @([CMPedometer isStepCountingAvailable]),
     });
-    [self sendEventWithName:@"StepCounter.stepsSensorInfo"
+    [self sendEventWithName:@"BackgroundStepCounter.stepsSensorInfo"
                        body:[self dictionaryAboutSensorInfo]];
 }
 
@@ -46,10 +46,10 @@ RCT_EXPORT_METHOD(startStepCounterUpdate:(NSDate *)date) {
     [self.pedometer startPedometerUpdatesFromDate:date?:[NSDate date]
                                       withHandler:^(CMPedometerData *pedometerData, NSError *error) {
         if(error) {
-            [self sendEventWithName:@"StepCounter.errorOccurred"
+            [self sendEventWithName:@"BackgroundStepCounter.errorOccurred"
                                body:error];
         } else if (pedometerData) {
-            [self sendEventWithName:@"StepCounter.stepCounterUpdate"
+            [self sendEventWithName:@"BackgroundStepCounter.stepCounterUpdate"
                                body:[self dictionaryFromPedometerData:pedometerData]];
         }
     }];
@@ -90,10 +90,10 @@ RCT_EXPORT_METHOD(startStepsDetection) {
     [[SOMotionDetecter sharedInstance]
       startDetectionWithUpdateBlock:^(NSError *error) {
         if(error) {
-            [self sendEventWithName:@"StepCounter.errorOccurred"
+            [self sendEventWithName:@"BackgroundStepCounter.errorOccurred"
                                body:error];
         } else {
-            [self sendEventWithName:@"StepCounter.stepDetected"
+            [self sendEventWithName:@"BackgroundStepCounter.stepDetected"
                                body:@true];
         }
     }];

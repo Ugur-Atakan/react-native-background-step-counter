@@ -1,65 +1,67 @@
-# 안드로이드 기본센서 & 복합센서
+# Android basic sensor & composite sensor
 
-- [안드로이드 동작 센서](https://developer.android.com/guide/topics/sensors/sensors_motion?hl=ko)
-- [안드로이드 센서 유형](https://source.android.com/docs/core/interaction/sensors/sensor-types?hl=ko)
+- [Android Motion sensor](https://developer.android.com/guide/topics/sensors/sensors_motion)
+- [Android sensor type](https://source.android.com/docs/core/interaction/sensors/sensor-types)
+
+# Android Basic & Composite Sensors
 
 ## TYPE_ACCELEROMETER
 
-SensorEvent.values[0] x축의 가속력(중력 포함). m/s2
-SensorEvent.values[1] y축의 가속력(중력 포함). m/s2
-SensorEvent.values[2] z축의 가속력(중력 포함). m/s2
+`SensorEvent.values[0]`: Acceleration along the x-axis (including gravity). m/s²  
+`SensorEvent.values[1]`: Acceleration along the y-axis (including gravity). m/s²  
+`SensorEvent.values[2]`: Acceleration along the z-axis (including gravity). m/s²  
 
 ## TYPE_ACCELEROMETER_UNCALIBRATED
 
-SensorEvent.values[0] 편향 보상 없이 X축을 따라 측정한 가속. m/s2
-SensorEvent.values[1] 편향 보상 없이 Y축을 따라 측정한 가속. m/s2
-SensorEvent.values[2] 편향 보상 없이 Z축을 따라 측정한 가속. m/s2
-SensorEvent.values[3] 추정된 편향 보상을 적용하여 X축을 따라 측정한 가속. m/s2
-SensorEvent.values[4] 추정된 편향 보상을 적용하여 Y축을 따라 측정한 가속. m/s2
-SensorEvent.values[5] 추정된 편향 보상을 적용하여 Z축을 따라 측정한 가속. m/s2
+`SensorEvent.values[0]`: Uncalibrated acceleration along the x-axis. m/s²  
+`SensorEvent.values[1]`: Uncalibrated acceleration along the y-axis. m/s²  
+`SensorEvent.values[2]`: Uncalibrated acceleration along the z-axis. m/s²  
+`SensorEvent.values[3]`: Bias compensated acceleration along the x-axis. m/s²  
+`SensorEvent.values[4]`: Bias compensated acceleration along the y-axis. m/s²  
+`SensorEvent.values[5]`: Bias compensated acceleration along the z-axis. m/s²  
 
 ## TYPE_GRAVITY
 
-SensorEvent.values[0] x축의 중력. m/s2
-SensorEvent.values[1] y축의 중력. m/s2
-SensorEvent.values[2] z축의 중력. m/s2
+`SensorEvent.values[0]`: Gravity on the x-axis. m/s²  
+`SensorEvent.values[1]`: Gravity on the y-axis. m/s²  
+`SensorEvent.values[2]`: Gravity on the z-axis. m/s²  
 
 ## TYPE_GYROSCOPE
 
-SensorEvent.values[0] x축을 중심으로 한 회전 속도. rad/s
-SensorEvent.values[1] y축을 중심으로 한 회전 속도. rad/s
-SensorEvent.values[2] z축을 중심으로 한 회전 속도. rad/s
+`SensorEvent.values[0]`: Angular velocity around the x-axis. rad/s  
+`SensorEvent.values[1]`: Angular velocity around the y-axis. rad/s  
+`SensorEvent.values[2]`: Angular velocity around the z-axis. rad/s  
 
 ## TYPE_GYROSCOPE_UNCALIBRATED
 
-SensorEvent.values[0] x축을 중심으로 한 회전 속도(드리프트 보상 없음). rad/s
-SensorEvent.values[1] y축을 중심으로 한 회전 속도(드리프트 보상 없음). rad/s
-SensorEvent.values[2] z축을 중심으로 한 회전 속도(드리프트 보상 없음). rad/s
-SensorEvent.values[3] x축을 중심으로 추정한 드리프트. rad/s
-SensorEvent.values[4] y축을 중심으로 추정한 드리프트. rad/s
-SensorEvent.values[5] z축을 중심으로 추정한 드리프트. rad/s
+`SensorEvent.values[0]`: Uncalibrated angular velocity around the x-axis. rad/s  
+`SensorEvent.values[1]`: Uncalibrated angular velocity around the y-axis. rad/s  
+`SensorEvent.values[2]`: Uncalibrated angular velocity around the z-axis. rad/s  
+`SensorEvent.values[3]`: Estimated drift around the x-axis. rad/s  
+`SensorEvent.values[4]`: Estimated drift around the y-axis. rad/s  
+`SensorEvent.values[5]`: Estimated drift around the z-axis. rad/s  
 
 ## TYPE_LINEAR_ACCELERATION
 
-SensorEvent.values[0] x축의 가속력(중력 제외). m/s2
-SensorEvent.values[1] y축의 가속력(중력 제외). m/s2
-SensorEvent.values[2] z축의 가속력(중력 제외). m/s2
+`SensorEvent.values[0]`: Acceleration along the x-axis (excluding gravity). m/s²  
+`SensorEvent.values[1]`: Acceleration along the y-axis (excluding gravity). m/s²  
+`SensorEvent.values[2]`: Acceleration along the z-axis (excluding gravity). m/s²  
 
 ## TYPE_ROTATION_VECTOR
 
-SensorEvent.values[0] x축의 회전 벡터 구성요소(x _ sin(θ/2)). 단위 없음
-SensorEvent.values[1] y축의 회전 벡터 구성요소(y _ sin(θ/2)). 단위 없음
-SensorEvent.values[2] z축의 회전 벡터 구성요소(z \* sin(θ/2)). 단위 없음
-SensorEvent.values[3] 회전 벡터의 스칼라 구성요소((cos(θ/2)). 옵셔널.단위 없음
+`SensorEvent.values[0]`: x-axis component of the rotation vector (x * sin(θ/2)). Unitless  
+`SensorEvent.values[1]`: y-axis component of the rotation vector (y * sin(θ/2)). Unitless  
+`SensorEvent.values[2]`: z-axis component of the rotation vector (z * sin(θ/2)). Unitless  
+`SensorEvent.values[3]`: Scalar component of the rotation vector (cos(θ/2)). Optional. Unitless  
 
 ## TYPE_STEP_COUNTER
 
-SensorEvent.values[0] 센서가 활성화되어 있는 동안 마지막 재부팅 이후로 사용자가 걸은 걸음 수. 단위 보
+`SensorEvent.values[0]`: Number of steps taken by the user since the last reboot while the sensor was activated. Unitless  
 
 ### TYPE_SIGNIFICANT_MOTION
 
-(중요하거나 위험할 수 있는 활동 감지) 해당 없음
+(Detects significant or potentially dangerous activity) None
 
 ### TYPE_STEP_DETECTOR
 
-해당 없음
+None

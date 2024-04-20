@@ -7,7 +7,7 @@ import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.module.annotations.ReactModule
 
 
-@ReactModule(name = "StepCounter")
+@ReactModule(name = "BackgroundStepCounter")
 abstract class BackgroundStepCounterSpec internal constructor(context: ReactApplicationContext) :
 ReactContextBaseJavaModule(context) {
 

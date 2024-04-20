@@ -1,5 +1,5 @@
-import type { TurboModule } from 'react-native';
-import { TurboModuleRegistry } from 'react-native';
+import type { TurboModule } from "react-native";
+import { TurboModuleRegistry } from "react-native";
 
 /**
  * `StepCountData` is an object with four properties: `distance`, `steps`, `startDate`, and `endDate`.
@@ -22,9 +22,9 @@ export type StepCountData = {
   floorsDescended?: number; // number of floors descended (iOS only)
 };
 
-export const NAME = 'StepCounter';
-export const VERSION = '0.3.1';
-export const eventName = 'StepCounter.stepCounterUpdate';
+export const NAME = "BackgroundStepCounter";
+export const VERSION = "0.0.1";
+export const eventName = "BackgroundStepCounter.stepCounterUpdate";
 
 export interface Spec extends TurboModule {
   /**
@@ -43,14 +43,8 @@ export interface Spec extends TurboModule {
    * });
    */
   isStepCountingSupported(): Promise<Record<string, boolean>>;
-  /**
-   * @param {number} from the current time obtained by `new Date()` in milliseconds.
-   */
-  startStepCounterUpdate(from: number): void;
-  /**
-   * Stop updating the step count data.
-   * Removes all the listeners that were registered with `startStepCounterUpdate`.
-   */
+
+  startStepCounterUpdate(): void;
 
   startBackgroundService(): void;
 
@@ -64,4 +58,6 @@ export interface Spec extends TurboModule {
 }
 
 /* Getting enforcing the module from the registry. */
-export default TurboModuleRegistry.getEnforcing<Spec>('BackgroundStepCounter') as Spec;
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  "BackgroundStepCounter"
+) as Spec;
